@@ -7,32 +7,32 @@ class VigenereCipheringMachine {
     throw Error;
     message = message.toUpperCase();
     key = key.toUpperCase();
-    let keyStr = [];
-    let encryptedStr = [];
+    let kStr = [];
+    let eStr = [];
 
     for (let i = 0; i < message.length; i++) {
-      if (keyStr.length == message.length) {
+      if (kStr.length == message.length) {
         break;
       } else if (i == key.length - 1) {
         i = 0;
       } else {
-        keyStr.push(key[i]);
+        kStr.push(key[i]);
       }
     }
 
     for (let i = 0; i < message.length; i++) {
       if (alphabet.indexOf(message[i]) == -1) {
-        encryptedStr.push(i);
+        eStr.push(i);
         continue;
       }
 
-      let index = alphabet.indexOf(message[i]) + alphabet.indexOf(keyStr[i]);
+      let index = alphabet.indexOf(message[i]) + alphabet.indexOf(kStr[i]);
 
       if (index > 26) {
         index = index - 26;
       }
 
-      encryptedStr.push(alphabet[index]);
+      eStr.push(alphabet[index]);
     }
   }    
   decrypt(message, key) {
